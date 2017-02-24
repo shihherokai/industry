@@ -39,7 +39,7 @@
 			<div class="login_form">
 				<form action="php/logon.php" name="login" method="post">
 					<label for="">使用者編號</label>
-					<input type="Tel" name="user" />
+					<input type="Tel" name="user" style="ime-mode:disabled" onkeyup="return ValidateNumber(this,value)" />
 					<button type="button" onClick="check()">進入系統</button>
 				</form>
 			</div>
@@ -52,11 +52,23 @@
 		{
 			alertify.alert("資料填寫不完整");
 		}
+		else if(login.user.value.length !== 10) 
+		{
+			alertify.alert("提醒您，您的編碼共計十碼。");
+		}
 		else 
 		{
 			login.submit();
 		}
 	}
+	function ValidateNumber(e, pnumber)
+{
+    if (!/^\d+$/.test(pnumber))
+    {
+        e.value = /^\d+/.exec(e.value);
+    }
+    return false;
+}
   </script>
 
 </body>
