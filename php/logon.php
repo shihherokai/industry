@@ -2,6 +2,18 @@
 	session_start();
 	require_once 'db.php';
 	require_once 'functions.php';
+
+
+		 require('../recaptcha/src/autoload.php');
+ // _GOOGLE_RECAPTCHA_SEC_KEY 就是 google 給的 Secret Key
+ $recaptcha = new \ReCaptcha\ReCaptcha("6LfpvxYUAAAAAPa6aeFqtDJN6Xlml9zA7Xj2lEtE");
+ $gRecaptchaResponse = $_POST['g-recaptcha-response'];
+ $remoteIp = $_SERVER['REMOTE_ADDR'];
+ $resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
+ if(!$resp->isSuccess()){
+ 	echo '請先證明您不是機器人';
+ 	return;
+ }
 ?>
 
 <?php

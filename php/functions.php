@@ -18,7 +18,7 @@
 		if($result)
 		{
 			//使用 mysql_num_rows 方法，判別執行的語法，其取得的資料量，是否大於0
-			if(mysql_num_rows($result) == 1)
+			if(mysql_num_rows($result) == 1 || mysql_num_rows($result) > 1)
 			{
 				$data = mysql_fetch_assoc($result);
 				
@@ -56,7 +56,7 @@
 		if($result)
 		{
 			//使用 mysql_num_rows 方法，判別執行的語法，其取得的資料量，是否大於0
-			if(mysql_num_rows($result) == 1)
+			if(mysql_num_rows($result) == 1 || mysql_num_rows($result) > 1)
 			{
 				$has_user = true;
 				
